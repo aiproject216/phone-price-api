@@ -2,11 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
 from urllib.parse import quote
+import os 
 
 app = Flask(__name__)
 CORS(app)
 
-API_KEY = "b62c6f0ffe60c1a77c068424f772233211c8e73876e99fbd4c6fe9c2c4a57563"
+API_KEY = os.environ.get("b62c6f0ffe60c1a77c068424f772233211c8e73876e99fbd4c6fe9c2c4a57563")
 
 # List of valid phone brands to filter queries
 VALID_PHONE_BRANDS = [
@@ -77,4 +78,5 @@ if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+
 
